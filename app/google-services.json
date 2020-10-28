@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "532127568176",
+    "firebase_url": "https://fiscalizacao-58c11.firebaseio.com",
+    "project_id": "fiscalizacao-58c11",
+    "storage_bucket": "fiscalizacao-58c11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532127568176:android:82b2b78b3d234f294438f5",
+        "android_client_info": {
+          "package_name": "br.com.fiscalizacao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532127568176-5okqfqgbgqakogk0doqspc0vsosdmcuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.fiscalizacao",
+            "certificate_hash": "614cb3d813e1664c5d3c145566d4dff2b2a188e8"
+          }
+        },
+        {
+          "client_id": "532127568176-jg8a2rtq98404qpn6nriq4pe37prpk9i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt0sXtwKvAjlsjka4JR4JULkf-sJmUhBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532127568176-jg8a2rtq98404qpn6nriq4pe37prpk9i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
