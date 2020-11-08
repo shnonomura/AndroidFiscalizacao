@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fiscalizacao</string>
+    <string name="image_description">Equipe Fiscalizacao</string>
+    <string name="novo">Novo</string>
+    <string name="atualiza">Atualiza</string>
+    <string name="deleta">Deleta</string>
 </resources>

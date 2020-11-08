@@ -1,4 +1,4 @@
-package br.com.fiscalizacao;
+package br.com.fiscalizacao.model;
 
 import com.google.firebase.database.DatabaseReference;
 
@@ -32,7 +32,7 @@ public class OsModel {
     public HashMap<String, Boolean> toPagarMap(){
 
         // criar o HashMap Object chamado pagarItensMap
-        HashMap<String, Boolean> pagarItensHashMap = new HashMap<String, Boolean>();
+        HashMap<String, Boolean> pagarItensHashMap = new HashMap<>();
         pagarItensHashMap.put("item01",false);
         pagarItensHashMap.put("item02",false);
         pagarItensHashMap.put("item03",false);
@@ -44,7 +44,7 @@ public class OsModel {
     public HashMap<String, Float> toQuantidadeMap() {
 
         // criar o HashMap Object chamado qtdeItensMap
-        HashMap<String, Float> qtdeItensHashMap = new HashMap<String, Float>();
+        HashMap<String, Float> qtdeItensHashMap = new HashMap<>();
         qtdeItensHashMap.put("item01", (float) 1);
         qtdeItensHashMap.put("item02", (float) 1);
         qtdeItensHashMap.put("item03", (float) 1);
@@ -57,7 +57,7 @@ public class OsModel {
     public HashMap<String, Boolean> toNrContratoMao() {
 
         // criar o HashMap Object chamado nrContratoMap
-        HashMap<String, Boolean> nrContratoHashMap = new HashMap<String, Boolean>();
+        HashMap<String, Boolean> nrContratoHashMap = new HashMap<>();
         nrContratoHashMap.put("20207421001", false);
         nrContratoHashMap.put("20207421002", false);
         nrContratoHashMap.put("20207421003", false);

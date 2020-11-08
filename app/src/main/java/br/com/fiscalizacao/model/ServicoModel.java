@@ -1,4 +1,4 @@
-package br.com.fiscalizacao;
+package br.com.fiscalizacao.model;
 
 public class ServicoModel {
 
@@ -46,4 +46,5 @@ public class ServicoModel {
     public void setPagar(Boolean pagar) {
         this.pagar = pagar;
     }
+
 } // fim da classe ServicoModel

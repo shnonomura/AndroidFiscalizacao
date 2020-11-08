@@ -1,4 +1,4 @@
-package br.com.fiscalizacao;
+package br.com.fiscalizacao.model;
 
 public class ContratoModel {
 
