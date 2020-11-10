@@ -1,37 +1,35 @@
-package br.com.fiscalizacao;
+package br.com.fiscalizacao.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.fiscalizacao.OrdemServico;
+import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.model.FiscalModel;
 
 public class MainActivity<Fiscal> extends AppCompatActivity {
 
 
     private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    private List<String> listFiscal = new ArrayList<String>();
+    private List<String> listFiscal = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapterfiscal;
     private ListView lv_fiscais;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +37,29 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lv_fiscais = findViewById(R.id.lv_fiscais);
 
-        eventoDatabase();
+        capturaFiscais();
 
+        //cria um OnItemClickListener
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, OrdemServico.class);
+
+                String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
+                intent.putExtra(OrdemServico.FISCALID, (int)id);
+                intent.putExtra(OrdemServico.NOMEFISCAL,nomeFiscal );
+                startActivity(intent);
+
+            }
+        };
+
+        ListView lv_fiscais = (ListView) findViewById(R.id.lv_fiscais);
+        lv_fiscais.setOnItemClickListener(itemClickListener);
 
     } // fim do método onCreate
 
-    private void eventoDatabase() {
+    private void capturaFiscais() {
+
         ref.child("fiscal").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -65,40 +80,5 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
             }
         });
     } // fim do método eventoDatabase()
-
-    private void addChildEventListener(){
-
-        ChildEventListener childListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        };
-
-
-    } // fim do método addChildEventListener
-
 
 } // fim do MainActivity

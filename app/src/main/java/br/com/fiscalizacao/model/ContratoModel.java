@@ -6,6 +6,8 @@ public class ContratoModel {
     private String fornecedor;
     private String uf;
     private String fiscal;
+    private Boolean servicos;
+    private Boolean os;
 
     public ContratoModel() {
     }

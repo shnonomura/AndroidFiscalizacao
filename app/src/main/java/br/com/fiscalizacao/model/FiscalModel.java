@@ -4,9 +4,16 @@ public class FiscalModel {
 
     private String nome;
     private String matricula;
-    private Boolean contrato;
+    private String fiscal;
 
     public FiscalModel() {
+
+    }
+
+    public FiscalModel(String nome, String matricula, String fiscal) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.fiscal = fiscal;
     }
 
     public String getNome() {
@@ -25,12 +32,11 @@ public class FiscalModel {
         this.matricula = matricula;
     }
 
-    public Boolean getContrato() {
-        return contrato;
+    public String getFiscal() {
+        return fiscal;
     }
 
-    public void setContrato(Boolean contrato) {
-        this.contrato = contrato;
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
     }
-
 } // fim da classe FiscalModel

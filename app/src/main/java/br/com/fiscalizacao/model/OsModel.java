@@ -1,69 +1,36 @@
 package br.com.fiscalizacao.model;
 
-import com.google.firebase.database.DatabaseReference;
-
 import java.util.HashMap;
 
 public class OsModel {
 
     private String os;
+    private String fiscal;
+    private String contrato;
     private Boolean fiscalizada;
     private Boolean analisada;
     private HashMap<String, Boolean> pagarHashMap;
     private HashMap<String, Float> qtdeHashMap;
-    private HashMap<String, Boolean> nrContratoHashMap;
 
 
     public OsModel() {
     }
 
-    public OsModel( String newOs) {
-
-        os = newOs;
-        fiscalizada = false;
-        analisada = false;
-        pagarHashMap = null;
-        qtdeHashMap = null;
-        nrContratoHashMap = null;
-
+    public OsModel(String os, String contrato, Boolean fiscalizada, Boolean analisada) {
+        this.os = os;
+        this.contrato = contrato;
+        this.fiscalizada = fiscalizada;
+        this.analisada = analisada;
     }
 
-
-    public HashMap<String, Boolean> toPagarMap(){
-
-        // criar o HashMap Object chamado pagarItensMap
-        HashMap<String, Boolean> pagarItensHashMap = new HashMap<>();
-        pagarItensHashMap.put("item01",false);
-        pagarItensHashMap.put("item02",false);
-        pagarItensHashMap.put("item03",false);
-        System.out.println("HashMap pagarItens = " + pagarItensHashMap);
-
-        return pagarItensHashMap;
-    }
-
-    public HashMap<String, Float> toQuantidadeMap() {
-
-        // criar o HashMap Object chamado qtdeItensMap
-        HashMap<String, Float> qtdeItensHashMap = new HashMap<>();
-        qtdeItensHashMap.put("item01", (float) 1);
-        qtdeItensHashMap.put("item02", (float) 1);
-        qtdeItensHashMap.put("item03", (float) 1);
-        System.out.println("HashMap qtdeItens = " + qtdeItensHashMap);
-
-        return qtdeItensHashMap;
-    }
-
-
-    public HashMap<String, Boolean> toNrContratoMao() {
-
-        // criar o HashMap Object chamado nrContratoMap
-        HashMap<String, Boolean> nrContratoHashMap = new HashMap<>();
-        nrContratoHashMap.put("20207421001", false);
-        nrContratoHashMap.put("20207421002", false);
-        nrContratoHashMap.put("20207421003", false);
-        System.out.println("HashMap nrContratoMap = " + nrContratoHashMap);
-
-        return nrContratoHashMap;
+    public OsModel(String os, String fiscal, String contrato, Boolean fiscalizada, Boolean analisada, HashMap<String, Boolean> pagarHashMap, HashMap<String, Float> qtdeHashMap) {
+        this.os = os;
+        this.fiscal = fiscal;
+        this.contrato = contrato;
+        this.fiscalizada = fiscalizada;
+        this.analisada = analisada;
+        this.pagarHashMap = pagarHashMap;
+        this.qtdeHashMap = qtdeHashMap;
     }
 
     public String getOs() {
@@ -72,6 +39,22 @@ public class OsModel {
 
     public void setOs(String os) {
         this.os = os;
+    }
+
+    public String getFiscal() {
+        return fiscal;
+    }
+
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
+
+    public String getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(String contrato) {
+        this.contrato = contrato;
     }
 
     public Boolean getFiscalizada() {
@@ -105,14 +88,5 @@ public class OsModel {
     public void setQtdeHashMap(HashMap<String, Float> qtdeHashMap) {
         this.qtdeHashMap = qtdeHashMap;
     }
-
-    public HashMap<String, Boolean> getNrContratoHashMap() {
-        return nrContratoHashMap;
-    }
-
-    public void setNrContratoHashMap(HashMap<String, Boolean> nrContratoHashMap) {
-        this.nrContratoHashMap = nrContratoHashMap;
-    }
-
 
 } // fim da classe OsModel

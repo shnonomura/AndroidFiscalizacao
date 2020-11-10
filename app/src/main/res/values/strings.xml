@@ -4,4 +4,10 @@
     <string name="novo">Novo</string>
     <string name="atualiza">Atualiza</string>
     <string name="deleta">Deleta</string>
+    <string name="harmon_description">Harmon Beth</string>
+    <string name="fiscalservico">Fiscal de Serviço</string>
+    <string name="os">OS</string>
+    <string name="contrato">Contrato</string>
+    <string name="empresa">Empresa</string>
+    <string name="lixo">LixoLixoLixo</string>
 </resources>
