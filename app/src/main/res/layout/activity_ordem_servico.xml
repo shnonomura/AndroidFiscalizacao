@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/fundo_fiscal"
+    android:padding="16dp"
     tools:context=".OrdemServico">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/fundo_fiscal">
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -36,7 +25,7 @@
                 android:background="@color/fundo_fiscal"
                 android:text="@string/harmon_description"
                 android:textAlignment="center"
-                android:textSize="32dp" />
+                android:textSize="32sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,7 +33,7 @@
                 android:background="@color/fundo_fiscal"
                 android:text="@string/fiscalservico"
                 android:textAlignment="center"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/os_recycler"
@@ -52,8 +41,5 @@
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
 
-        </LinearLayout>
-
-    </FrameLayout>
 
 </LinearLayout>
