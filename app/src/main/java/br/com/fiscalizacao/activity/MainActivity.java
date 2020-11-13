@@ -19,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.fiscalizacao.OrdemServico;
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.model.FiscalModel;
 
@@ -43,17 +42,17 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, OrdemServico.class);
+                Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
 
                 String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
-                intent.putExtra(OrdemServico.FISCALID, (int)id);
-                intent.putExtra(OrdemServico.NOMEFISCAL,nomeFiscal );
+                intent.putExtra(OrdensFiscal.FISCALID, (int)id);
+                intent.putExtra(OrdensFiscal.NOMEFISCAL,nomeFiscal );
                 startActivity(intent);
 
             }
         };
 
-        ListView lv_fiscais = (ListView) findViewById(R.id.lv_fiscais);
+        ListView lv_fiscais = findViewById(R.id.lv_fiscais);
         lv_fiscais.setOnItemClickListener(itemClickListener);
 
     } // fim do método onCreate
@@ -79,6 +78,7 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
 
             }
         });
-    } // fim do método eventoDatabase()
+    } // fim do método capturaFiscais()
+
 
 } // fim do MainActivity

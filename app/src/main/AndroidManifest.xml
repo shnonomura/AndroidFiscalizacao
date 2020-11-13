@@ -11,9 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fiscalizacao">
-        <activity android:name=".OrdemServico">
-
-        </activity>
+        <activity
+            android:name=".activity.ItensOrdemServico"
+            android:label="Ordem de Serviço"
+            android:parentActivityName=".activity.OrdensFiscal" />
+        <activity
+            android:name=".activity.OrdensFiscal"
+            android:label="Lista de Ordens de Serviços"
+            android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"

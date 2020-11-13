@@ -37,56 +37,55 @@ public class OsModel {
         return os;
     }
 
-    public void setOs(String os) {
-        this.os = os;
-    }
-
     public String getFiscal() {
         return fiscal;
-    }
-
-    public void setFiscal(String fiscal) {
-        this.fiscal = fiscal;
     }
 
     public String getContrato() {
         return contrato;
     }
 
-    public void setContrato(String contrato) {
-        this.contrato = contrato;
-    }
-
     public Boolean getFiscalizada() {
         return fiscalizada;
-    }
-
-    public void setFiscalizada(Boolean fiscalizada) {
-        this.fiscalizada = fiscalizada;
     }
 
     public Boolean getAnalisada() {
         return analisada;
     }
 
-    public void setAnalisada(Boolean analisada) {
-        this.analisada = analisada;
-    }
-
     public HashMap<String, Boolean> getPagarHashMap() {
         return pagarHashMap;
-    }
-
-    public void setPagarHashMap(HashMap<String, Boolean> pagarHashMap) {
-        this.pagarHashMap = pagarHashMap;
     }
 
     public HashMap<String, Float> getQtdeHashMap() {
         return qtdeHashMap;
     }
 
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public void setFiscal(String fiscal) {
+        this.fiscal = fiscal;
+    }
+
+    public void setContrato(String contrato) {
+        this.contrato = contrato;
+    }
+
+    public void setFiscalizada(Boolean fiscalizada) {
+        this.fiscalizada = fiscalizada;
+    }
+
+    public void setAnalisada(Boolean analisada) {
+        this.analisada = analisada;
+    }
+
+    public void setPagarHashMap(HashMap<String, Boolean> pagarHashMap) {
+        this.pagarHashMap = pagarHashMap;
+    }
+
     public void setQtdeHashMap(HashMap<String, Float> qtdeHashMap) {
         this.qtdeHashMap = qtdeHashMap;
     }
-
 } // fim da classe OsModel

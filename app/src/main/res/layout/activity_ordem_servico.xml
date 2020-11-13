@@ -3,43 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/fundo_fiscal"
+    android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".OrdemServico">
+    tools:context=".activity.OrdensFiscal">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@color/fundo_fiscal"
+        android:contentDescription="@string/harmon_description"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/harmombeth" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:background="@color/fundo_fiscal"
-                android:contentDescription="@string/harmon_description"
-                android:cropToPadding="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/harmombeth" />
+    <TextView
+        android:id="@+id/nomefiscal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fundo_fiscal"
+        android:paddingBottom="8sp"
+        android:text="@string/harmon_description"
+        android:textAlignment="center"
+        android:textSize="32sp" />
 
-            <TextView
-                android:id="@+id/nomefiscal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/fundo_fiscal"
-                android:text="@string/harmon_description"
-                android:textAlignment="center"
-                android:textSize="32sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fundo_fiscal"
+        android:paddingBottom="16sp"
+        android:text="@string/fiscalservico"
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/fundo_fiscal"
-                android:text="@string/fiscalservico"
-                android:textAlignment="center"
-                android:textSize="16sp" />
+    <Button
+        android:id="@+id/muda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clicaBotao"
+        android:text="vai para Itens de OS" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/os_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/osList_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:scrollbars="vertical" />
+    </LinearLayout>
 
 </LinearLayout>

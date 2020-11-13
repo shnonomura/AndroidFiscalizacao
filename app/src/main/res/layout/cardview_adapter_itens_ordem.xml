@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_column="100">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4sp">
+
+        <TextView
+            android:id="@+id/cod_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cod_item"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/descr_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descr_item"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/qtde_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quant_item"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/punit_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/punit_item"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/ptotal_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ptot_item"
+            android:textAlignment="viewStart" />
+
+    </GridLayout>
+
+</androidx.cardview.widget.CardView>
