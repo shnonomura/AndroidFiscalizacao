@@ -10,52 +10,77 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp" >
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textOs"
+            android:id="@+id/titleos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:text="@string/os"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/checkAnalisada"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textOs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/titleos"
+            android:text="20004658"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/titleContract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleos"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:text="@string/contrato"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textContrato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_below="@+id/textOs"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
-            android:text="@string/contrato"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_toEndOf="@+id/titleContract"
+            android:text="202074211356"
+            android:textSize="14sp" />
 
         <CheckBox
             android:id="@+id/checkAnalisada"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="18dp"
             android:text="@string/analisada"
-            app:layout_constraintStart_toStartOf="@id/checkFiscalizada"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/checkFiscalizada"/>
+            android:textSize="14sp" />
 
         <CheckBox
             android:id="@+id/checkFiscalizada"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:layout_below="@+id/checkAnalisada"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="11dp"
             android:text="@string/fiscalizada"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textContrato" />
+            android:textSize="14sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

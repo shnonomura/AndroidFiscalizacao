@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_column="100">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2sp">
+
+        <TextView
+            android:id="@+id/cod_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4sp"
+            android:layout_marginTop="2dp"
+            android:text="@string/cod_item"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descr_item"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4sp"
+            android:layout_marginTop="2sp"
+            android:text="@string/descr_item"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toEndOf="@+id/cod_item"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tit_qtde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4sp"
+            android:layout_marginTop="4sp"
+            android:text="@string/quant_item"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cod_item" />
+
+        <TextView
+            android:id="@+id/tit_pr_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="4sp"
+            android:text="@string/punit_item"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toEndOf="@+id/tit_qtde"
+            app:layout_constraintTop_toBottomOf="@+id/descr_item" />
+
+        <TextView
+            android:id="@+id/tit_pr_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="4sp"
+            android:text="@string/ptot_item"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toEndOf="@+id/tit_pr_unit"
+            app:layout_constraintTop_toBottomOf="@+id/descr_item" />
+
+        <EditText
+            android:id="@+id/qtde_item"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:layout_marginStart="4sp"
+            android:layout_marginTop="4sp"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tit_qtde" />
+
+        <EditText
+            android:id="@+id/punit_item"
+            android:layout_width="90sp"
+            android:layout_height="30sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4sp"
+            app:layout_constraintStart_toEndOf="@+id/qtde_item"
+            app:layout_constraintTop_toBottomOf="@id/tit_pr_unit" />
+
+        <TextView
+            android:id="@+id/ptotal_item"
+            android:layout_width="90sp"
+            android:layout_height="30sp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="4sp"
+            app:layout_constraintStart_toEndOf="@+id/punit_item"
+            app:layout_constraintTop_toBottomOf="@id/tit_pr_total" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

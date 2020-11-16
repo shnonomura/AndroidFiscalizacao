@@ -16,9 +16,9 @@
 
     <string name="tot_os">preco total OS</string>
 
-    <string name="cod_item">cod item</string>
+    <string name="cod_item">cod. item</string>
     <string name="descr_item">descricao</string>
-    <string name="quant_item">quantidade</string>
+    <string name="quant_item">quant.</string>
     <string name="punit_item">preco unitario</string>
     <string name="ptot_item">preco total</string>
 
