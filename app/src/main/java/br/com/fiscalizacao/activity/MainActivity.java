@@ -45,7 +45,6 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
 
                 String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
-                //intent.putExtra(OrdensFiscal.FISCALID, (int)id);
                 intent.putExtra(OrdensFiscal.NOMEFISCAL,nomeFiscal );
                 startActivity(intent);
 

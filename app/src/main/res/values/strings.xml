@@ -19,6 +19,7 @@
     <string name="cod_item">cod. item</string>
     <string name="descr_item">descricao</string>
     <string name="quant_item">quant.</string>
+    <string name="unidade">unidade</string>
     <string name="punit_item">preco unitario</string>
     <string name="ptot_item">preco total</string>
 

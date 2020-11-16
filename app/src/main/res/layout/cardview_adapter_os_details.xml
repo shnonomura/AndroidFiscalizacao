@@ -50,6 +50,17 @@
             app:layout_constraintTop_toBottomOf="@+id/cod_item" />
 
         <TextView
+            android:id="@+id/tit_unidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="4sp"
+            android:text="@string/unidade"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toEndOf="@id/tit_qtde"
+            app:layout_constraintTop_toBottomOf="@+id/descr_item" />
+
+        <TextView
             android:id="@+id/tit_pr_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +68,7 @@
             android:layout_marginTop="4sp"
             android:text="@string/punit_item"
             android:textAlignment="viewStart"
-            app:layout_constraintStart_toEndOf="@+id/tit_qtde"
+            app:layout_constraintStart_toEndOf="@+id/tit_unidade"
             app:layout_constraintTop_toBottomOf="@+id/descr_item" />
 
         <TextView
@@ -73,7 +84,7 @@
 
         <EditText
             android:id="@+id/qtde_item"
-            android:layout_width="40sp"
+            android:layout_width="50sp"
             android:layout_height="30sp"
             android:layout_marginStart="4sp"
             android:layout_marginTop="4sp"
@@ -81,13 +92,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tit_qtde" />
 
-        <EditText
+        <TextView
+            android:id="@+id/unidade_item"
+            android:layout_width="40sp"
+            android:layout_height="30sp"
+            android:layout_marginStart="14sp"
+            android:layout_marginTop="4sp"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toEndOf="@id/qtde_item"
+            app:layout_constraintTop_toBottomOf="@+id/tit_unidade" />
+
+        <TextView
             android:id="@+id/punit_item"
             android:layout_width="90sp"
             android:layout_height="30sp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4sp"
-            app:layout_constraintStart_toEndOf="@+id/qtde_item"
+            app:layout_constraintStart_toEndOf="@+id/unidade_item"
             app:layout_constraintTop_toBottomOf="@id/tit_pr_unit" />
 
         <TextView
