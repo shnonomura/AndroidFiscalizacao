@@ -1,11 +1,9 @@
 package br.com.fiscalizacao.adapter;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -17,27 +15,21 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import br.com.fiscalizacao.R;
-import br.com.fiscalizacao.activity.ItensOrdemServico;
-import br.com.fiscalizacao.activity.OrdensFiscal;
 import br.com.fiscalizacao.model.OsModel;
 
-public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHolder> {
+public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHolder>  {
 
     // este é o Adapter do Recyclerview da OrdensFiscal Activity
 
     private List<OsModel> listaOs;
-    private onItemClickListener mListener;
+    private int position;
+    private OnItemClickListener mListener;
 
 
-    public interface onItemClickListener {
-        void onItemClick(int position);
 
-    }
-
-    public void setOnItemClickListener(AdapterView.OnItemClickListener listener){
-        mListener = (onItemClickListener) listener;
-    }
+    // construtor
     public OsListAdapter(List<OsModel> lista) {
+
         this.listaOs = lista;
     }
 
@@ -48,7 +40,7 @@ public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHold
         CardView cv = (CardView) LayoutInflater.from(parent.getContext()).
                 inflate(R.layout.cardview_adapter_os, parent,false);
 
-        return new OsViewHolder(cv);
+        return new OsViewHolder(cv, mListener);
     }
 
     public void onBindViewHolder(OsViewHolder holder, final int position) {
@@ -66,15 +58,6 @@ public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHold
         holder.fiscalizada.setChecked(true);
         holder.analisada.setChecked(false); */
 
-        /*cardView.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent(cardView.getContext(), OrdensFiscal.class);
-                intent.putExtra(ItemsOrdemServico.NUM_OS, position);
-                cardView.getContext().startActivity(intent);
-            }
-        });*/
-
     }
 
     public int getItemCount() {
@@ -83,19 +66,42 @@ public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHold
         return listaOs.size();
     }
 
-    public static class OsViewHolder extends RecyclerView.ViewHolder{
+    public interface OnItemClickListener{
+
+        void onItemClick(int position);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+
+    }
+
+    public static class OsViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
         public TextView os;
         public TextView contrato;
         public CheckBox analisada;
         public CheckBox fiscalizada;
 
-        public OsViewHolder(View itemView) {
+        public OsViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             os = itemView.findViewById(R.id.textOs);
             contrato = itemView.findViewById(R.id.textContrato);
             analisada = itemView.findViewById(R.id.checkAnalisada);
             fiscalizada = itemView.findViewById(R.id.checkFiscalizada);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!= null){
+                        int position = getAdapterPosition();
+                        if(position!= RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }  // fim do construtor OsViewHolder que tem como parâmetro uma view
 
     } // fim da class OsViewHolder

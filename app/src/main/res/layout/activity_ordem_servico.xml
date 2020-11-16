@@ -36,13 +36,6 @@
         android:textAlignment="center"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/muda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="clicaBotao"
-        android:text="vai para Itens de OS" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -40,6 +40,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // outras dependências da aplicação  // Dependência principal do Mockito
+    testImplementation 'org.mockito:mockito-core:2.28.2'  // Dependência do Mockito para testes no Android
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'  // Dependência do Mockito para ser possível mockar classes e métodos constantes
+    testImplementation 'org.mockito:mockito-inline:2.28.2'
+
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:25.12.0')
 

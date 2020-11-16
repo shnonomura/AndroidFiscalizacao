@@ -12,13 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fiscalizacao">
         <activity
-            android:name=".activity.ItensOrdemServico"
-            android:label="Ordem de Serviço"
-            android:parentActivityName=".activity.OrdensFiscal" />
-        <activity
             android:name=".activity.OrdensFiscal"
-            android:label="Lista de Ordens de Serviços"
-            android:parentActivityName=".activity.MainActivity" />
+            android:label="Lista de Ordens de Serviços"/>
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
