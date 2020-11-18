@@ -85,17 +85,18 @@
         <EditText
             android:id="@+id/qtde_item"
             android:layout_width="50sp"
-            android:layout_height="30sp"
+            android:layout_height="60sp"
             android:layout_marginStart="4sp"
             android:layout_marginTop="4sp"
-            android:textSize="10sp"
+            android:textSize="20sp"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tit_qtde" />
 
         <TextView
             android:id="@+id/unidade_item"
             android:layout_width="40sp"
-            android:layout_height="30sp"
+            android:layout_height="20sp"
             android:layout_marginStart="14sp"
             android:layout_marginTop="4sp"
             android:textAlignment="viewStart"
@@ -105,7 +106,7 @@
         <TextView
             android:id="@+id/punit_item"
             android:layout_width="90sp"
-            android:layout_height="30sp"
+            android:layout_height="60sp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4sp"
             app:layout_constraintStart_toEndOf="@+id/unidade_item"
@@ -114,7 +115,7 @@
         <TextView
             android:id="@+id/ptotal_item"
             android:layout_width="90sp"
-            android:layout_height="30sp"
+            android:layout_height="20sp"
             android:layout_marginStart="26dp"
             android:layout_marginTop="4sp"
             app:layout_constraintStart_toEndOf="@+id/punit_item"

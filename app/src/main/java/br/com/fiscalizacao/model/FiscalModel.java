@@ -4,39 +4,51 @@ public class FiscalModel {
 
     private String nome;
     private String matricula;
-    private String fiscal;
+    private String contrato;
 
+
+    // construtores
     public FiscalModel() {
-
     }
 
-    public FiscalModel(String nome, String matricula, String fiscal) {
+    public FiscalModel( String nome, String matricula, String contrato){
         this.nome = nome;
         this.matricula = matricula;
-        this.fiscal = fiscal;
+        this.contrato = contrato;
     }
 
-    public String getNome() {
-        return nome;
+    // getters
+    public String getNome(){
+        return this.nome;
     }
 
-    public String getMatricula() {
-        return matricula;
+    public String getMatricula(){
+        return this.matricula;
     }
 
-    public String getFiscal() {
-        return fiscal;
+    public String getContrato(){
+        return this.contrato;
     }
 
+    // setters
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(String matricula){
         this.matricula = matricula;
     }
 
-    public void setFiscal(String fiscal) {
-        this.fiscal = fiscal;
+    public void setContrato(String contrato){
+        this.contrato = contrato;
+    }
+
+    @Override
+    public String toString() {
+        return "FiscalModel{" +
+                "nome='" + nome + '\'' +
+                ", matricula='" + matricula + '\'' +
+                ", contrato='" + contrato + '\'' +
+                '}';
     }
 } // fim da classe FiscalModel

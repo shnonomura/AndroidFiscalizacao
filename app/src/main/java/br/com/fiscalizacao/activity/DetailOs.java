@@ -24,15 +24,14 @@ import java.util.List;
 
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.adapter.OsDetailsAdapter;
-import br.com.fiscalizacao.adapter.OsListAdapter;
-import br.com.fiscalizacao.model.OsDetailsModel;
+import br.com.fiscalizacao.model.ItemOsModel;
 import br.com.fiscalizacao.model.OsModel;
 
 public class DetailOs extends AppCompatActivity {
 
     public DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-    private ArrayList<OsDetailsModel> mDetailList = new ArrayList<>();
+    private ArrayList<ItemOsModel> mDetailList = new ArrayList<>();
 
     private RecyclerView mRecyclerView;
     private OsDetailsAdapter mAdapter;
@@ -48,9 +47,49 @@ public class DetailOs extends AppCompatActivity {
 
         mostra_OS_selecionada();
 
-        cria_detalhes_Os(os_selecionada);
+        //cria_detalhes_Os(os_selecionada);
+
+        //OsModel os = criaOs();
+        //enviaOsFirebase(os);
 
     } // fim do método onCreate
+
+
+    private OsModel criaOs() {
+
+        OsModel os = new OsModel("0005", "2020742123541", false, false);
+        ItemOsModel item1 = new ItemOsModel(
+                "001",
+                "Mola hidraulica",
+                1.0,
+                "un",
+                120.00
+        );
+
+        ItemOsModel item2 = new ItemOsModel(
+                "002",
+                "Mola hidraulica",
+                1.0,
+                "un",
+                120.00
+        );
+
+        List<ItemOsModel> itens = new ArrayList<>();
+            itens.add(item1);
+            itens.add(item2);
+        os.setItensList(itens);
+
+        return os;
+
+    } // fim método criaOs()
+
+
+    private void enviaOsFirebase(OsModel os) {
+
+        //ref.child("novaos").push().setValue(os);
+        ref.child("os").child(os.getOs()).setValue(os);
+
+    } // fim do método enviaOsFirebase
 
     public void mostra_OS_selecionada(){
 
@@ -59,6 +98,9 @@ public class DetailOs extends AppCompatActivity {
         TextView os = findViewById(R.id.os_number);
         os.setText(os_selecionada);
     } // fim do método mostra_OS_selecionada
+
+
+
 
     public void cria_detalhes_Os(String os_selecionada){
 
@@ -69,16 +111,26 @@ public class DetailOs extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //listOs.clear();
                 for(DataSnapshot objSnapshot:snapshot.getChildren()) {
-                    OsDetailsModel os = objSnapshot.getValue(OsDetailsModel.class);
+                    ItemOsModel os = objSnapshot.getValue(ItemOsModel.class);
 
-                    OsDetailsModel capturaDetalhesOs = new OsDetailsModel();
+                    ItemOsModel capturaDetalhesOs = new ItemOsModel();
+                    /*String codigo = os.getCod_item();
 
+                    String descricao = os.getDescr_item();
+                    String qtde = os.getQtde_item();
+                    String unidade = os.getUnidade_item();
+                    String preco_unit = os.getPunit_item();*/
+                    /*Log.i("Fis código item ; " , "codigo");
+                    Log.i("Fis descricao item ; " , descricao);
+                    Log.i("Fis qtde item ; " , qtde);
+                    Log.i("Fis unidade item ; " , unidade);
+                    Log.i("Fis preco_unit item ; " , preco_unit);*/
                     capturaDetalhesOs.setCod_item(os.getCod_item());
                     capturaDetalhesOs.setDescr_item(os.getDescr_item());
                     capturaDetalhesOs.setQtde_item(os.getQtde_item());
                     capturaDetalhesOs.setUnidade_item(os.getUnidade_item());
+                    capturaDetalhesOs.setPunit_item(os.getPunit_item());
 
-                    //ArrayList<OsModel> listOs = new ArrayList<OsModel>();
                     mDetailList.add(capturaDetalhesOs);
 
                     OsDetailsAdapter adapter = new OsDetailsAdapter(mDetailList);

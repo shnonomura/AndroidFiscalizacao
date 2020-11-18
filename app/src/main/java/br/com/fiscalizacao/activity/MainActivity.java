@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,8 +25,8 @@ import br.com.fiscalizacao.model.FiscalModel;
 
 public class MainActivity<Fiscal> extends AppCompatActivity {
 
-
-    private DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference ref = database.getReference();
     private List<String> listFiscal = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapterfiscal;
     private ListView lv_fiscais;
@@ -36,27 +37,42 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lv_fiscais = findViewById(R.id.lv_fiscais);
 
-        capturaFiscais();
+        criaFiscais();
 
-        //cria um OnItemClickListener
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
+        //capturaFiscais();
 
-                String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
-                intent.putExtra(OrdensFiscal.NOMEFISCAL,nomeFiscal );
-                startActivity(intent);
+        //apresentaListView();
 
-            }
-        };
 
-        ListView lv_fiscais = findViewById(R.id.lv_fiscais);
-        lv_fiscais.setOnItemClickListener(itemClickListener);
 
     } // fim do método onCreate
 
-    private void capturaFiscais() {
+    public void criaFiscais(){
+
+        ArrayList<FiscalModel> listaFiscais = new ArrayList<>();
+        FiscalModel f1 = new FiscalModel("Margareth", "111111", "202074201111");
+        FiscalModel f2 = new FiscalModel("Jessica", "222222", "202074202222");
+        FiscalModel f3 = new FiscalModel("Beth", "333333", "202074203333");
+        listaFiscais.add(f1);
+        listaFiscais.add(f2);
+        listaFiscais.add(f3);
+        FiscalModel item = listaFiscais.get(0);
+        Log.i("xxx Lista de Fiscais : " , item.toString());
+        Log.i("xxx Lista de Fiscais : " , listaFiscais.get(1).toString());
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
+
+        ref=database.getReference();
+        ref.child("fiscal").child("teste").setValue(f1);
+
+    } // fim do método criaFiscais
+
+
+   /* public void capturaFiscais() {
 
         ref.child("fiscal").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -77,7 +93,30 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
 
             }
         });
+
     } // fim do método capturaFiscais()
 
+
+    public void apresentaListView(){
+
+        //cria um OnItemClickListener
+        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
+
+                String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
+                intent.putExtra(OrdensFiscal.NOMEFISCAL,nomeFiscal );
+                startActivity(intent);
+
+            }
+        };
+
+        ListView lv_fiscais = findViewById(R.id.lv_fiscais);
+        lv_fiscais.setOnItemClickListener(itemClickListener);
+
+    }// fim do método apresentaListView
+
+*/
 
 } // fim do MainActivity

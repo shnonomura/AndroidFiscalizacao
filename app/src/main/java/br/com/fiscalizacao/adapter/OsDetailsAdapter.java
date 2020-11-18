@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import br.com.fiscalizacao.R;
-import br.com.fiscalizacao.model.OsDetailsModel;
+import br.com.fiscalizacao.model.ItemOsModel;
 
 public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDetailViewHolder> {
 
-    private ArrayList<OsDetailsModel> mOsDetailsList;
+    private ArrayList<ItemOsModel> mOsDetailsList;
     private OnItemClickListener mListener;
 
     public static class OsDetailViewHolder extends RecyclerView.ViewHolder{
@@ -43,7 +43,7 @@ public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDe
     } // fim da class OsDetailViewHolder
 
     // construtor do Adapter
-    public OsDetailsAdapter(ArrayList<OsDetailsModel> detailsList){
+    public OsDetailsAdapter(ArrayList<ItemOsModel> detailsList){
         mOsDetailsList = detailsList;
     }
 
@@ -59,7 +59,7 @@ public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDe
 
     @Override
     public void onBindViewHolder(@NonNull OsDetailViewHolder holder, int position) {
-        OsDetailsModel currentItem = mOsDetailsList.get(position);
+        ItemOsModel currentItem = mOsDetailsList.get(position);
 
         holder.mcod_item.setText(currentItem.getCod_item());
         holder.mdescr_item.setText(currentItem.getDescr_item());
