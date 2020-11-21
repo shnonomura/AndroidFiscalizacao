@@ -1,6 +1,5 @@
 package br.com.fiscalizacao.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +61,7 @@ public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHol
 
     public int getItemCount() {
 
-        Log.i( "Fisc : número itens", String.valueOf(listaOs.size()));
+        //Log.i( "Fisc : osListAadapter - número itens", String.valueOf(listaOs.size()));
         return listaOs.size();
     }
 
