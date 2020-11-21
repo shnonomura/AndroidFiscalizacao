@@ -17,11 +17,11 @@ import java.util.List;
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.model.OsModel;
 
-public class OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHolder>  {
+public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHolder>  {
 
     // este é o Adapter do Recyclerview da OrdensFiscal Activity
 
-    private List<OsModel> listaOs;
+    private final List<OsModel> listaOs;
     private int position;
     private OnItemClickListener mListener;
 

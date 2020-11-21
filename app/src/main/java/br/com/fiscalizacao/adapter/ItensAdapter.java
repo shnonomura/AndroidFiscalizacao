@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import br.com.fiscalizacao.R;
-import br.com.fiscalizacao.model.ItemOsModel;
+import br.com.fiscalizacao.model.ItensModel;
 
-public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDetailViewHolder> {
+public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailViewHolder> {
 
-    private ArrayList<ItemOsModel> mOsDetailsList;
+    private final ArrayList<ItensModel> mItensList;
     private OnItemClickListener mListener;
 
     public static class OsDetailViewHolder extends RecyclerView.ViewHolder{
@@ -43,23 +43,24 @@ public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDe
     } // fim da class OsDetailViewHolder
 
     // construtor do Adapter
-    public OsDetailsAdapter(ArrayList<ItemOsModel> detailsList){
-        mOsDetailsList = detailsList;
+    public ItensAdapter(ArrayList<ItensModel> detailsList){
+        mItensList = detailsList;
     }
 
     @NonNull
     @Override
     public OsDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_adapter_os_details,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_adapter_itens,parent,false);
         OsDetailViewHolder detailViewHolder = new OsDetailViewHolder(v);
+        // TODO
         return detailViewHolder;
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull OsDetailViewHolder holder, int position) {
-        ItemOsModel currentItem = mOsDetailsList.get(position);
+        ItensModel currentItem = mItensList.get(position);
 
         holder.mcod_item.setText(currentItem.getCod_item());
         holder.mdescr_item.setText(currentItem.getDescr_item());
@@ -71,7 +72,7 @@ public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDe
 
     @Override
     public int getItemCount() {
-        return mOsDetailsList.size();
+        return mItensList.size();
     }
 
     public interface OnItemClickListener{
@@ -80,10 +81,10 @@ public class OsDetailsAdapter extends RecyclerView.Adapter<OsDetailsAdapter.OsDe
 
     }
 
-    public void setOnItemClickListener(OsDetailsAdapter.OnItemClickListener listener){
+    public void setOnItemClickListener(ItensAdapter.OnItemClickListener listener){
         mListener = listener;
 
     }
 
 
-} // fim da class OsDetailsAdapter
+} // fim da class ItensAdapter
