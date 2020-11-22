@@ -70,7 +70,7 @@ public class ItensOS extends AppCompatActivity {
         Intent intent = getIntent();
         os_selecionada = intent.getStringExtra(NUM_OS); // número OS
         TextView os = findViewById(R.id.os_number);
-        os.setText(os_selecionada);
+        os.setText("Ordem de Serviço " + os_selecionada);
         //Log.i("Fisc - dentro metodo mostra_OS_selecionada - mostra value de os_selecionada", os_selecionada);
     } // fim do método mostra_OS_selecionada
 
@@ -86,10 +86,10 @@ public class ItensOS extends AppCompatActivity {
                 ArrayList<ItensModel> listItens = new ArrayList<>();
                 ItensModel item = new ItensModel();
                 OsModel os = new OsModel();
-
+                Double Total_OS = 0.0;
 
                 Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
-
+                // Iterador para buscar a OS com os respectivos itens
                 Iterable<DataSnapshot> it = snapshot.getChildren();
 
                 for (DataSnapshot dados : it){
@@ -114,11 +114,18 @@ public class ItensOS extends AppCompatActivity {
                     Double qtde_item =  os.getItens().get(i).getQtde_item();
                     String unid_item = os.getItens().get(i).getUnidade_item();
                     Double pr_item = os.getItens().get(i).getPunit_item();
+                    Double pr_totItem = (qtde_item * pr_item);
 
-                    item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item);
+                    Total_OS = Total_OS + pr_totItem;
+
+                    item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item, pr_totItem);
                     Log.i(": Fisc - item da OS " , item.getCod_item()+item.getDescr_item());
                     listItens.add(item);
                 }
+
+                // Mostrar o total da OS
+                TextView total = findViewById(R.id.os_total);
+                total.setText("R$ " + Total_OS);
 
                 // itens Adapter precisa receber um Arraylist
                 ItensAdapter adapter = new ItensAdapter(listItens);

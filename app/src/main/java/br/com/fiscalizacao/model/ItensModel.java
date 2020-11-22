@@ -10,17 +10,19 @@ public class ItensModel {
     private Double qtde_item;
     private String unidade_item;
     private Double punit_item;
+    private Double ptotal_item;
 
     public ItensModel() {
     }
 
-    public ItensModel(String cod_item, String descr_item, Double qtde_item, String unidade_item, Double punit_item) {
+    public ItensModel(String cod_item, String descr_item, Double qtde_item, String unidade_item, Double punit_item, Double ptotal_item) {
 
         this.cod_item = cod_item;
         this.descr_item = descr_item;
         this.qtde_item = qtde_item;
         this.unidade_item = unidade_item;
         this.punit_item = punit_item;
+        this.ptotal_item = qtde_item*punit_item;
     }
 
     // getters
@@ -45,6 +47,8 @@ public class ItensModel {
         return punit_item;
     }
 
+    public Double getPtotal_item() { return ptotal_item; }
+
     // setters
 
     public void setCod_item(String cod_item) {
@@ -67,6 +71,8 @@ public class ItensModel {
         this.punit_item = punit_item;
     }
 
+    public void setPtotal_item(Double ptotal_item) { this.ptotal_item = ptotal_item; }
+
     // toMap é necessário para o processo de inclusão
     public Map<String, Object> toMap(){
         HashMap<String , Object> result = new HashMap<>();
@@ -75,6 +81,7 @@ public class ItensModel {
         result.put( "qtde_item" ,qtde_item );
         result.put( "unidade_item" , unidade_item);
         result.put( "punit_item" , punit_item );
+        result.put( "ptotal_item" , ptotal_item);
         return result;
     }
 

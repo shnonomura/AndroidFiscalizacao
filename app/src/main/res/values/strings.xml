@@ -22,5 +22,6 @@
     <string name="unidade">unidade</string>
     <string name="punit_item">preco unitario</string>
     <string name="ptot_item">preco total</string>
+    <string name="dar_conformidade">Dar conformidade</string>
 
 </resources>

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Fiscalizacao">
         <activity
             android:name=".activity.ItensOS"
-            android:label="Lista de Ordens de Serviços" >
+            android:label="Itens da Ordem de Serviço" >
 
         </activity>
         <activity

@@ -26,6 +26,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
     public EditText mqtde_item;
     public TextView munidade;
     public TextView mpunit_item;
+    public TextView mptot_item;
 
         // construtor OsDetailViewHolder
         public OsDetailViewHolder(View itemView){
@@ -36,6 +37,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
             mqtde_item = itemView.findViewById(R.id.qtde_item);
             munidade = itemView.findViewById(R.id.unidade_item);
             mpunit_item = itemView.findViewById(R.id.punit_item);
+            mptot_item = itemView.findViewById(R.id.ptotal_item);
 
         } // fim do construtor da classe OsDetailViewHolder
 
@@ -67,6 +69,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
         holder.mqtde_item.setText(String.valueOf(currentItem.getQtde_item()));
         holder.munidade.setText(currentItem.getUnidade_item());
         holder.mpunit_item.setText(String.valueOf(currentItem.getPunit_item()));
+        holder.mptot_item.setText(String.valueOf(currentItem.getPtotal_item()));
 
     }
 
