@@ -43,7 +43,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
     } // fim da class OsDetailViewHolder
 
     // construtor do Adapter
-    public ItensAdapter(ArrayList<ItensModel> detailsList){
+    public ItensAdapter(ArrayList<ItensModel>detailsList){
         mItensList = detailsList;
     }
 

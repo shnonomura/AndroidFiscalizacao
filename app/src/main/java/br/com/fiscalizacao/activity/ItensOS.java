@@ -3,10 +3,13 @@ package br.com.fiscalizacao.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,8 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.adapter.ItensAdapter;
+import br.com.fiscalizacao.model.ItensModel;
 import br.com.fiscalizacao.model.OsModel;
 
 public class ItensOS extends AppCompatActivity {
@@ -76,19 +82,45 @@ public class ItensOS extends AppCompatActivity {
         query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //Log.i("Fisc - dentro mostraItens - os_selecionada :", os_selecionada);
-                //Log.i("Fisc - dentro mostraItens :", snapshot.getValue().toString());
+
+                ArrayList<ItensModel> listItens = new ArrayList<>();
+                ItensModel item = new ItensModel();
+                OsModel os = new OsModel();
+
+
                 Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
 
                 Iterable<DataSnapshot> it = snapshot.getChildren();
-                for(DataSnapshot dados : it){
-                    OsModel os = dados.getValue(OsModel.class);
-                    Log.i(": Fisc - itens " , os.getItens().toString());
+
+                for (DataSnapshot dados : it){
+                    os = dados.getValue(OsModel.class);
                 }
 
-                    // itens Adapter precisa receber um Arraylist
-/*
-                listItens.add();
+
+                String nr_os = os.getOs();
+
+/*                Log.i(": Fisc - os ", nr_os);
+                Log.i(": Fisc - contrato ", os.getContrato());
+                Log.i(": Fisc - fiscal ", os.getFiscal());
+                Log.i(": Fisc - sit fiscalizada ", String.valueOf(os.getFiscalizada()));
+                Log.i(": Fisc - sit analisada ", String.valueOf(os.getAnalisada()));*/
+
+                Log.i(": Fisc - qtde itens " , String.valueOf(os.getItens().size()));
+
+                for( int i=0 ; i < os.getItens().size() ; i++){
+
+                    String codItem = os.getItens().get(i).getCod_item();
+                    String descr_item = os.getItens().get(i).getDescr_item();
+                    Double qtde_item =  os.getItens().get(i).getQtde_item();
+                    String unid_item = os.getItens().get(i).getUnidade_item();
+                    Double pr_item = os.getItens().get(i).getPunit_item();
+
+                    item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item);
+                    Log.i(": Fisc - item da OS " , item.getCod_item()+item.getDescr_item());
+                    listItens.add(item);
+                }
+
+                // itens Adapter precisa receber um Arraylist
                 ItensAdapter adapter = new ItensAdapter(listItens);
 
                     RecyclerView recyclerView = findViewById(R.id.osList_recycler);
@@ -101,7 +133,6 @@ public class ItensOS extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
 
 
-*/
 
             } // fim método onDataChange(DataSnapshot snapshot)
 
