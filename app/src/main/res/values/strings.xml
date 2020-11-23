@@ -13,6 +13,8 @@
     <string name="lixo">LixoLixoLixo</string>
     <string name="analisada">analisada</string>
     <string name="fiscalizada">fiscalizada</string>
+    <string name="altera_qtde">qtde</string>
+    <string name="save_img">icone salvar</string>
 
     <string name="tot_os">preco total OS</string>
 

@@ -17,10 +17,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4sp"
             android:layout_marginTop="2dp"
+            android:gravity="center"
             android:text="@string/cod_item"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,10 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4sp"
             android:layout_marginTop="2sp"
+            android:gravity="start|center"
             android:text="@string/descr_item"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="start|center"
             app:layout_constraintStart_toEndOf="@+id/cod_item"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,9 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4sp"
             android:layout_marginTop="4sp"
-            android:textSize="12sp"
-            android:text="@string/quant_item"
             android:gravity="center"
+            android:text="@string/quant_item"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cod_item" />
 
@@ -55,9 +55,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14sp"
             android:layout_marginTop="4sp"
-            android:textSize="12sp"
-            android:text="@string/unidade"
             android:gravity="center"
+            android:text="@string/unidade"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/qtde_item"
             app:layout_constraintTop_toBottomOf="@+id/descr_item" />
 
@@ -67,9 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
             android:layout_marginTop="4sp"
-            android:textSize="12sp"
-            android:text="@string/punit_item"
             android:gravity="center"
+            android:text="@string/punit_item"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/tit_unidade"
             app:layout_constraintTop_toBottomOf="@+id/descr_item" />
 
@@ -104,8 +104,8 @@
             android:layout_height="30sp"
             android:layout_marginStart="14sp"
             android:layout_marginTop="4sp"
-            android:textSize="10sp"
             android:gravity="center"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/qtde_item"
             app:layout_constraintTop_toBottomOf="@+id/tit_unidade" />
 
@@ -115,8 +115,8 @@
             android:layout_height="30sp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="4sp"
-            android:textSize="10sp"
             android:gravity="center"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/unidade_item"
             app:layout_constraintTop_toBottomOf="@id/tit_pr_unit" />
 
@@ -127,9 +127,20 @@
             android:layout_marginStart="26dp"
             android:layout_marginTop="4sp"
             android:gravity="center"
-            android:textSize="10sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/punit_item"
             app:layout_constraintTop_toBottomOf="@id/tit_pr_total" />
+
+       <ImageView
+            android:id="@+id/image_save"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="2sp"
+            android:layout_marginBottom="3sp"
+            android:src="@drawable/ic_save"
+           android:contentDescription="@string/save_img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ptotal_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,8 +1,10 @@
+
 package br.com.fiscalizacao.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,6 +36,10 @@ public class ItensOS extends AppCompatActivity {
     private ItensAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    ArrayList<ItensModel> listItens = new ArrayList<>();
+
+    private Button buttonConforme;
+
     public static final String NUM_OS = "num_os";
     public String os_selecionada;
 
@@ -42,27 +48,10 @@ public class ItensOS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itens);
 
-
         mostra_OS_selecionada();
-
-        //Log.i("Fisc - onCreate - antes passar como parâmetro de mostraItens : " , os_selecionada);
         mostraItens(os_selecionada);
 
-
-
-        //enviaOsFirebase(os);
-
     } // fim do método onCreate
-
-/*
-
-    private void enviaOsFirebase(OsModel os) {
-
-        //ref.child("novaos").push().setValue(os);
-        ref.child("os").child(os.getOs()).setValue(os);
-
-    } // fim do método enviaOsFirebase
-*/
 
 
     public void mostra_OS_selecionada(){
@@ -71,24 +60,23 @@ public class ItensOS extends AppCompatActivity {
         os_selecionada = intent.getStringExtra(NUM_OS); // número OS
         TextView os = findViewById(R.id.os_number);
         os.setText("Ordem de Serviço " + os_selecionada);
-        //Log.i("Fisc - dentro metodo mostra_OS_selecionada - mostra value de os_selecionada", os_selecionada);
+
     } // fim do método mostra_OS_selecionada
 
 
     public void mostraItens(String os_selecionada){
 
-        Query query1 = ref.child("os").orderByChild("os").equalTo(os_selecionada);
 
+        Query query1 = ref.child("os").orderByChild("os").equalTo(os_selecionada);
         query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                ArrayList<ItensModel> listItens = new ArrayList<>();
                 ItensModel item = new ItensModel();
                 OsModel os = new OsModel();
-                Double Total_OS = 0.0;
+                Double total_OS = 0.0;
 
-                Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
+                //Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
                 // Iterador para buscar a OS com os respectivos itens
                 Iterable<DataSnapshot> it = snapshot.getChildren();
 
@@ -96,14 +84,7 @@ public class ItensOS extends AppCompatActivity {
                     os = dados.getValue(OsModel.class);
                 }
 
-
                 String nr_os = os.getOs();
-
-/*                Log.i(": Fisc - os ", nr_os);
-                Log.i(": Fisc - contrato ", os.getContrato());
-                Log.i(": Fisc - fiscal ", os.getFiscal());
-                Log.i(": Fisc - sit fiscalizada ", String.valueOf(os.getFiscalizada()));
-                Log.i(": Fisc - sit analisada ", String.valueOf(os.getAnalisada()));*/
 
                 Log.i(": Fisc - qtde itens " , String.valueOf(os.getItens().size()));
 
@@ -116,28 +97,43 @@ public class ItensOS extends AppCompatActivity {
                     Double pr_item = os.getItens().get(i).getPunit_item();
                     Double pr_totItem = (qtde_item * pr_item);
 
-                    Total_OS = Total_OS + pr_totItem;
+                    //total_OS = total_OS + pr_totItem;
 
                     item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item, pr_totItem);
-                    Log.i(": Fisc - item da OS " , item.getCod_item()+item.getDescr_item());
+                    Log.i(": Fisc - item da OS " , item.getCod_item()+"   "+item.getDescr_item());
                     listItens.add(item);
                 }
 
                 // Mostrar o total da OS
-                TextView total = findViewById(R.id.os_total);
-                total.setText("R$ " + Total_OS);
+                //TextView total = findViewById(R.id.os_total);
+                //total.setText("R$ " + total_OS);
 
                 // itens Adapter precisa receber um Arraylist
-                ItensAdapter adapter = new ItensAdapter(listItens);
+                ItensAdapter mAdapter = new ItensAdapter(listItens);
 
-                    RecyclerView recyclerView = findViewById(R.id.osList_recycler);
+                RecyclerView recyclerView = findViewById(R.id.osList_recycler);
 
-                    // configurar recyclerview
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setHasFixedSize(true);
-                    recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
-                    recyclerView.setAdapter(adapter);
+                // configurar recyclerview
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
+                recyclerView.setAdapter(mAdapter);
+
+                mAdapter.setOnItemClickListener(new ItensAdapter.OnItemClickListener() {
+                    @Override
+                    public void onClick(int position) {
+
+                    }
+
+                    @Override
+                    public void onSaveClick(int position, double qtde) {
+                        grava_firebase(nr_os, position, qtde);
+                        listItens.get(position).changeQtde(qtde);
+                        mAdapter.notifyItemChanged(position);
+
+                    }
+                }) ;
 
 
 
@@ -146,13 +142,16 @@ public class ItensOS extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-                Log.i("Fisc Erro xxx--x-x-x-x-x", error.toException().toString());
-                //makeText(this,"Erro ao executar a Intent que direciona o aplicativo para Itens da OS", LENGTH_LONG).show();
 
             } // fim método onCancelled().
 
         }); // fim do query1.addListenerForSingleValueEvent
 
     } // fim do método cria_detalhes_Os
+
+    private void grava_firebase(String os, int position, double qtde){
+
+
+    }
 
 } // fim da class ItensOS
