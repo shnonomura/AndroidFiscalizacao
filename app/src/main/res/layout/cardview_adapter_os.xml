@@ -63,22 +63,10 @@
             android:id="@+id/checkAnalisada"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/analisada"
-            android:textSize="14sp" />
-
-        <CheckBox
-            android:id="@+id/checkFiscalizada"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_below="@+id/checkAnalisada"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="11dp"
-            android:text="@string/fiscalizada"
             android:textSize="14sp" />
 
     </RelativeLayout>

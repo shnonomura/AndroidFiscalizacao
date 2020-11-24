@@ -48,13 +48,11 @@ public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHol
         OsModel dadosOs = listaOs.get(position);
         holder.os.setText(dadosOs.getOs());
         holder.contrato.setText(dadosOs.getContrato());
-        holder.fiscalizada.setChecked(dadosOs.getFiscalizada());
-        holder.analisada.setChecked(dadosOs.getAnalisada());
+         holder.analisada.setChecked(dadosOs.getAnalisada());
 
         /*OsModel dadosOs = listaOs.get(position);
         holder.os.setText("OS 213213246");
         holder.contrato.setText("20201337468");
-        holder.fiscalizada.setChecked(true);
         holder.analisada.setChecked(false); */
 
     }
@@ -81,14 +79,12 @@ public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHol
         public TextView os;
         public TextView contrato;
         public CheckBox analisada;
-        public CheckBox fiscalizada;
 
         public OsViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             os = itemView.findViewById(R.id.textOs);
             contrato = itemView.findViewById(R.id.textContrato);
             analisada = itemView.findViewById(R.id.checkAnalisada);
-            fiscalizada = itemView.findViewById(R.id.checkFiscalizada);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
