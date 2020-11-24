@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.model.ItensModel;
 
 public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailViewHolder> {
 
-    private final ArrayList<ItensModel> mItensList;
+    private final List<ItensModel> mItensList;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener{
@@ -32,7 +32,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
     }
 
     // construtor do Adapter
-    public ItensAdapter(ArrayList<ItensModel>detailsList){
+    public ItensAdapter(List<ItensModel>detailsList){
         mItensList = detailsList;
     }
 

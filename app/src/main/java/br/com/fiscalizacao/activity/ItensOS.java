@@ -4,6 +4,7 @@ package br.com.fiscalizacao.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +23,10 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import br.com.fiscalizacao.R;
 import br.com.fiscalizacao.adapter.ItensAdapter;
@@ -36,12 +41,13 @@ public class ItensOS extends AppCompatActivity {
     private ItensAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    ArrayList<ItensModel> listItens = new ArrayList<>();
+    List<ItensModel> listItens = new ArrayList<>();
 
     private Button buttonConforme;
 
     public static final String NUM_OS = "num_os";
-    public String os_selecionada;
+    public static final String KEY = "key";
+    public String os_selecionada, chaveKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +56,52 @@ public class ItensOS extends AppCompatActivity {
 
         mostra_OS_selecionada();
         mostraItens(os_selecionada);
+        mostraButtonConforme();
+
 
     } // fim do método onCreate
 
+    public void mostraButtonConforme(){
 
+        buttonConforme = findViewById(R.id.button_conforme);
+        buttonConforme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grava_firebase(os_selecionada, listItens);
+            }
+        });
+    }
+
+    public void grava_firebase(String os, List<ItensModel> list){
+
+        int i=0;
+        DatabaseReference refItens = ref.child("os").child(chaveKey);
+
+        Iterator<ItensModel> it = list.iterator();
+        while (it.hasNext()){
+
+            //item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item, pr_totItem);
+            ItensModel obj = new ItensModel();
+            obj = it.next();
+
+            Map<String, Object> childUpdates = new HashMap<>();
+
+            childUpdates.put("analisada", true);
+            childUpdates.put( "itens/" + i + "/qtde_item", obj.getQtde_item());
+
+            refItens.updateChildren(childUpdates);
+
+            i = i + 1;
+        }
+
+
+    }
     public void mostra_OS_selecionada(){
 
         Intent intent = getIntent();
         os_selecionada = intent.getStringExtra(NUM_OS); // número OS
+        chaveKey = intent.getStringExtra(KEY);
+        Log.i(": Fisc - chave key ", chaveKey);
         TextView os = findViewById(R.id.os_number);
         os.setText("Ordem de Serviço " + os_selecionada);
 
@@ -76,7 +120,7 @@ public class ItensOS extends AppCompatActivity {
                 OsModel os = new OsModel();
                 Double total_OS = 0.0;
 
-                //Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
+                Log.i(": Fisc - dados snapshot ", snapshot.getValue().toString());
                 // Iterador para buscar a OS com os respectivos itens
                 Iterable<DataSnapshot> it = snapshot.getChildren();
 
@@ -128,7 +172,7 @@ public class ItensOS extends AppCompatActivity {
 
                     @Override
                     public void onSaveClick(int position, double qtde) {
-                        grava_firebase(nr_os, position, qtde);
+
                         listItens.get(position).changeQtde(qtde);
                         mAdapter.notifyItemChanged(position);
 
@@ -149,9 +193,5 @@ public class ItensOS extends AppCompatActivity {
 
     } // fim do método cria_detalhes_Os
 
-    private void grava_firebase(String os, int position, double qtde){
-
-
-    }
 
 } // fim da class ItensOS
