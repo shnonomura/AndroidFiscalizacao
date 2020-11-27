@@ -92,7 +92,8 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="2sp"
             android:gravity="center"
-            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
             android:padding="4sp"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,16 +126,15 @@
             android:layout_width="wrap_content"
             android:layout_height="30sp"
             android:layout_marginStart="10sp"
-            android:layout_marginTop="4sp"
             android:gravity="center"
             android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/tit_pr_total"
-            app:layout_constraintBottom_toBottomOf="@id/qtde_item" />
+            app:layout_constraintBottom_toBottomOf="@id/qtde_item"
+            app:layout_constraintStart_toStartOf="@id/tit_pr_total" />
 
        <ImageView
             android:id="@+id/image_save"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
            android:layout_marginStart="4sp"
            android:layout_marginTop="4sp"
             android:layout_marginBottom="3sp"

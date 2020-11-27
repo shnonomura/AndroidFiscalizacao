@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,8 @@ import br.com.fiscalizacao.adapter.ItensAdapter;
 import br.com.fiscalizacao.model.ItensModel;
 import br.com.fiscalizacao.model.OsModel;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class ItensOS extends AppCompatActivity {
 
     public DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -45,9 +48,12 @@ public class ItensOS extends AppCompatActivity {
 
     private Button buttonConforme;
 
+    public static final String NOMEFISCAL = "nome";
     public static final String NUM_OS = "num_os";
     public static final String KEY = "key";
     public String os_selecionada, chaveKey;
+    public String fiscal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +74,13 @@ public class ItensOS extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grava_firebase(os_selecionada, listItens);
+
+                Intent intent = new Intent(ItensOS.this, OrdensFiscal.class);
+                startActivity(intent);
+
             }
         });
-    }
+    } // fim do método mostraButtonConforme
 
     public void grava_firebase(String os, List<ItensModel> list){
 
@@ -99,6 +109,7 @@ public class ItensOS extends AppCompatActivity {
     public void mostra_OS_selecionada(){
 
         Intent intent = getIntent();
+        fiscal = intent.getStringExtra(NOMEFISCAL);
         os_selecionada = intent.getStringExtra(NUM_OS); // número OS
         chaveKey = intent.getStringExtra(KEY);
         Log.i(": Fisc - chave key ", chaveKey);
@@ -139,7 +150,8 @@ public class ItensOS extends AppCompatActivity {
                     Double qtde_item =  os.getItens().get(i).getQtde_item();
                     String unid_item = os.getItens().get(i).getUnidade_item();
                     Double pr_item = os.getItens().get(i).getPunit_item();
-                    Double pr_totItem = (qtde_item * pr_item);
+                    Double pr_totItem = qtde_item * pr_item;
+                    //Double pr_totItem = (qtde_item * pr_item);
 
                     //total_OS = total_OS + pr_totItem;
 
@@ -154,7 +166,6 @@ public class ItensOS extends AppCompatActivity {
 
                 // itens Adapter precisa receber um Arraylist
                 ItensAdapter mAdapter = new ItensAdapter(listItens);
-
                 RecyclerView recyclerView = findViewById(R.id.osList_recycler);
 
                 // configurar recyclerview
@@ -172,9 +183,13 @@ public class ItensOS extends AppCompatActivity {
 
                     @Override
                     public void onSaveClick(int position, double qtde) {
+                        CharSequence msg = "Alteração realizada.";
+                        int duration = LENGTH_SHORT;
 
                         listItens.get(position).changeQtde(qtde);
                         mAdapter.notifyItemChanged(position);
+                        Toast toast = Toast.makeText(getBaseContext(),msg,duration);
+                        toast.show();
 
                     }
                 }) ;
