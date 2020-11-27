@@ -95,7 +95,7 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
 
 
 
-    public void aguardaClickListView(){
+        public void aguardaClickListView(){
 
         //cria um OnItemClickListener
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
