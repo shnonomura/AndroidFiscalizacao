@@ -48,7 +48,6 @@ public class ItensOS extends AppCompatActivity {
 
     private Button buttonConforme;
 
-    public static final String NOMEFISCAL = "nome";
     public static final String NUM_OS = "num_os";
     public static final String KEY = "key";
     public String os_selecionada, chaveKey;
@@ -70,17 +69,24 @@ public class ItensOS extends AppCompatActivity {
     public void mostraButtonConforme(){
 
         buttonConforme = findViewById(R.id.button_conforme);
+
         buttonConforme.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 grava_firebase(os_selecionada, listItens);
-
+                //Log.i(": Fisc - estou dentro de mostraButtonConforme e passando pelo intent o NOMEFISCAL como ", fiscal);
                 Intent intent = new Intent(ItensOS.this, OrdensFiscal.class);
+                intent.putExtra("nome", fiscal);
                 startActivity(intent);
 
             }
         });
+
+
+
     } // fim do método mostraButtonConforme
+
 
     public void grava_firebase(String os, List<ItensModel> list){
 
@@ -109,9 +115,10 @@ public class ItensOS extends AppCompatActivity {
     public void mostra_OS_selecionada(){
 
         Intent intent = getIntent();
-        fiscal = intent.getStringExtra(NOMEFISCAL);
+        fiscal = intent.getStringExtra("nome");
         os_selecionada = intent.getStringExtra(NUM_OS); // número OS
         chaveKey = intent.getStringExtra(KEY);
+        Log.i(": Fisc - nome do fiscal recebido em mostra_OS_selecionada é  ", fiscal);
         Log.i(": Fisc - chave key ", chaveKey);
         TextView os = findViewById(R.id.os_number);
         os.setText("Ordem de Serviço " + os_selecionada);
@@ -156,7 +163,7 @@ public class ItensOS extends AppCompatActivity {
                     //total_OS = total_OS + pr_totItem;
 
                     item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item, pr_totItem);
-                    Log.i(": Fisc - item da OS " , item.getCod_item()+"   "+item.getDescr_item());
+                    //Log.i(": Fisc - item da OS " , item.getCod_item()+"   "+item.getDescr_item());
                     listItens.add(item);
                 }
 
@@ -184,11 +191,10 @@ public class ItensOS extends AppCompatActivity {
                     @Override
                     public void onSaveClick(int position, double qtde) {
                         CharSequence msg = "Alteração realizada.";
-                        int duration = LENGTH_SHORT;
 
                         listItens.get(position).changeQtde(qtde);
                         mAdapter.notifyItemChanged(position);
-                        Toast toast = Toast.makeText(getBaseContext(),msg,duration);
+                        Toast toast = Toast.makeText(getBaseContext(),msg,LENGTH_SHORT);
                         toast.show();
 
                     }

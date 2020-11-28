@@ -30,6 +30,7 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapterfiscal;
     private ListView lv_fiscais;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,9 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
 
 
     } // fim do método onCreate
-/*
+
+
+    /*
      public void criaFiscais(){
 
         ArrayList<FiscalModel> listaFiscais = new ArrayList<>();
@@ -64,8 +67,8 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
         ref.child("fiscal").push().setValue(f3);
 
     } // fim do método criaFiscais
-
 */
+
     @Override
     protected void onStart(){
         super.onStart();
@@ -94,7 +97,6 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
     }
 
 
-
         public void aguardaClickListView(){
 
         //cria um OnItemClickListener
@@ -104,7 +106,7 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
 
                 String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
-                intent.putExtra(OrdensFiscal.NOMEFISCAL,nomeFiscal );
+                intent.putExtra("nome",nomeFiscal );
                 startActivity(intent);
 
             }
@@ -115,7 +117,6 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
         lv_fiscais.setOnItemClickListener(itemClickListener);
 
     }// fim do método apresentaListView
-
 
 
 } // fim do MainActivity
