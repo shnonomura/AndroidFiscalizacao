@@ -2,17 +2,12 @@
     <string name="app_name">Fiscalizacao</string>
     <string name="os_activity">Ordem de Serviço</string>
     <string name="image_description">Equipe Fiscalizacao</string>
-    <string name="novo">Novo</string>
-    <string name="atualiza">Atualiza</string>
-    <string name="deleta">Deleta</string>
+
     <string name="anyataylorjoy_description">Anya Taylor Joy</string>
     <string name="fiscalservico">Fiscal de Serviço</string>
     <string name="os">OS</string>
     <string name="contrato">Contrato</string>
-    <string name="empresa">Empresa</string>
-    <string name="lixo">LixoLixoLixo</string>
     <string name="analisada">analisada</string>
-    <string name="fiscalizada">fiscalizada</string>
     <string name="altera_qtde">qtde</string>
     <string name="save_img">icone salvar</string>
 

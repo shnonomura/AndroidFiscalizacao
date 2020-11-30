@@ -97,26 +97,26 @@ public class MainActivity<Fiscal> extends AppCompatActivity {
     }
 
 
-        public void aguardaClickListView(){
+    public void aguardaClickListView(){
 
-        //cria um OnItemClickListener
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
+    //cria um OnItemClickListener
+    AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> lv_fiscais, View itemView, int position, long id) {
+            Intent intent = new Intent(MainActivity.this, OrdensFiscal.class);
 
-                String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
-                intent.putExtra("nome",nomeFiscal );
-                startActivity(intent);
+            String nomeFiscal = lv_fiscais.getItemAtPosition(position).toString();
+            intent.putExtra("nome",nomeFiscal );
+            startActivity(intent);
 
-            }
-        };
+        }
+    };
 
 
-        ListView lv_fiscais = findViewById(R.id.lv_fiscais);
-        lv_fiscais.setOnItemClickListener(itemClickListener);
+    ListView lv_fiscais = findViewById(R.id.lv_fiscais);
+    lv_fiscais.setOnItemClickListener(itemClickListener);
 
-    }// fim do método apresentaListView
+    }// fim do método aguardaClickListView
 
 
 } // fim do MainActivity

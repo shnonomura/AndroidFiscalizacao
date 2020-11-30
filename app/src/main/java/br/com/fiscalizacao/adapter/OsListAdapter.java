@@ -24,14 +24,11 @@ public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHol
     private int position;
     private OnItemClickListener mListener;
 
-
-
     // construtor
     public OsListAdapter(List<OsModel> lista) {
 
         this.listaOs = lista;
     }
-
 
     @NotNull
     public OsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,12 +45,7 @@ public class  OsListAdapter extends RecyclerView.Adapter<OsListAdapter.OsViewHol
         OsModel dadosOs = listaOs.get(position);
         holder.os.setText(dadosOs.getOs());
         holder.contrato.setText(dadosOs.getContrato());
-         holder.analisada.setChecked(dadosOs.getAnalisada());
-
-        /*OsModel dadosOs = listaOs.get(position);
-        holder.os.setText("OS 213213246");
-        holder.contrato.setText("20201337468");
-        holder.analisada.setChecked(false); */
+        holder.analisada.setChecked(dadosOs.getAnalisada());
 
     }
 

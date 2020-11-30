@@ -59,12 +59,14 @@ public class ItensOS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itens);
 
-        mostra_OS_selecionada();
+        mostraOsSelecionada();
         mostraItens(os_selecionada);
         mostraButtonConforme();
 
 
     } // fim do método onCreate
+
+
 
     public void mostraButtonConforme(){
 
@@ -112,7 +114,7 @@ public class ItensOS extends AppCompatActivity {
 
 
     }
-    public void mostra_OS_selecionada(){
+    public void mostraOsSelecionada(){
 
         Intent intent = getIntent();
         fiscal = intent.getStringExtra("nome");
@@ -146,10 +148,8 @@ public class ItensOS extends AppCompatActivity {
                     os = dados.getValue(OsModel.class);
                 }
 
-                String nr_os = os.getOs();
-
-                Log.i(": Fisc - qtde itens " , String.valueOf(os.getItens().size()));
-
+                //Log.i(": Fisc - qtde itens " , String.valueOf(os.getItens().size()));
+                // captura os dados do item e calcula o seu preço total
                 for( int i=0 ; i < os.getItens().size() ; i++){
 
                     String codItem = os.getItens().get(i).getCod_item();
@@ -158,9 +158,6 @@ public class ItensOS extends AppCompatActivity {
                     String unid_item = os.getItens().get(i).getUnidade_item();
                     Double pr_item = os.getItens().get(i).getPunit_item();
                     Double pr_totItem = qtde_item * pr_item;
-                    //Double pr_totItem = (qtde_item * pr_item);
-
-                    //total_OS = total_OS + pr_totItem;
 
                     item = new ItensModel(codItem, descr_item, qtde_item, unid_item, pr_item, pr_totItem);
                     //Log.i(": Fisc - item da OS " , item.getCod_item()+"   "+item.getDescr_item());

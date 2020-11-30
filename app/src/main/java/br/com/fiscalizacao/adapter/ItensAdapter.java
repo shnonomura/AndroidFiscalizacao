@@ -32,7 +32,7 @@ public class ItensAdapter extends RecyclerView.Adapter<ItensAdapter.OsDetailView
     }
 
     // construtor do Adapter
-    public ItensAdapter(List<ItensModel>detailsList){
+    public ItensAdapter(List<ItensModel> detailsList){
         mItensList = detailsList;
     }
 

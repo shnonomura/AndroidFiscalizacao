@@ -43,12 +43,4 @@ public class FiscalModel {
         this.contrato = contrato;
     }
 
-    @Override
-    public String toString() {
-        return "FiscalModel{" +
-                "nome='" + nome + '\'' +
-                ", matricula='" + matricula + '\'' +
-                ", contrato='" + contrato + '\'' +
-                '}';
-    }
 } // fim da classe FiscalModel
